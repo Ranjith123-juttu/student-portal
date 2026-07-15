@@ -2,7 +2,6 @@ services:
 
   student-portal:
     build: .
-    container_name: student-container
 
     ports:
       - "8081:80"
