@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+
+  student-portal:
+    build: .
+    container_name: student-container
+
+    ports:
+      - "8081:80"
+
+    restart: always
