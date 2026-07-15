@@ -1,32 +1,32 @@
 pipeline {
+
     agent any
 
     stages {
 
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                echo "Repository downloaded successfully"
+                echo "Repository downloaded"
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Docker Compose Build') {
             steps {
-                sh 'docker build -t student-app .'
+                sh 'docker compose build'
             }
         }
 
-        stage('Stop Old Container') {
+        stage('Docker Compose Down') {
             steps {
-                sh 'docker stop student-container || true'
-                sh 'docker rm student-container || true'
+                sh 'docker compose down || true'
             }
         }
 
-        stage('Run Container') {
+        stage('Docker Compose Up') {
             steps {
-                sh 'docker run -d --name student-container -p 8081:80 student-app'
+                sh 'docker compose up -d'
             }
         }
 
     }
-}
+}}
